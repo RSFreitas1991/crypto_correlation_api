@@ -10,6 +10,7 @@ import {
 import { CurrencyService } from './currency.service';
 import { ICurrency } from './schema/currency.schema';
 import { CreateCurrencyDto } from './dto/create-currency.dto';
+import { ValidateObjectIdPipe } from './validationpipes/id.validatepipe';
 
 @Controller('currency')
 export class CurrencyController {
@@ -26,7 +27,9 @@ export class CurrencyController {
   }
 
   @Get(':id')
-  async getCurrencyById(@Param('id') id: string): Promise<ICurrency | null> {
+  async getCurrencyById(
+    @Param('id', ValidateObjectIdPipe) id: string,
+  ): Promise<ICurrency | null> {
     return await this.currencyService.getCurrencyById(id);
   }
 
