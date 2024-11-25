@@ -6,8 +6,8 @@ import { CurrencyModule } from './currency/currency.module';
 
 @Module({
   imports: [
+    MongooseModule.forRoot('mongodb://localhost:27017/crypto'),
     CurrencyModule,
-    MongooseModule.forRoot('mongodb://localhost:27017/nest'),
   ],
   controllers: [AppController],
   providers: [AppService],
